@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Category = ({ chef }) => {
-    const { name, picture, years_of_experience, num_recipes, likes } = chef;
+    const {id ,name, picture, years_of_experience, num_recipes, likes } = chef;
 
     return (
         <div>
@@ -21,7 +21,7 @@ const Category = ({ chef }) => {
                         <h6>Experience: {years_of_experience} years</h6>
                         <h6>Numbers of recipes: {num_recipes}</h6>
                         <h6>likes: {likes}</h6>
-                        <Button variant="danger">View Recipes</Button>
+                        <Link to={`/chef/${id}`}><Button variant="danger">View Recipes</Button></Link>
                     </Card.Body>
                 </Card>
             </Col>

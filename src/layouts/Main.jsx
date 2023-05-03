@@ -7,7 +7,6 @@ import Category from '../pages/Chefcategory/Category';
 
 const Main = () => {
     const chefCategory = useLoaderData();
-    console.log(chefCategory);
     return (
         <div>
             <Header></Header>
