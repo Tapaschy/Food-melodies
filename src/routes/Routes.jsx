@@ -7,6 +7,7 @@ import Login from "../pages/login/Login";
 import LoginLayout from "../layouts/LoginLayout";
 import Register from "../pages/login/Register";
 import Errorpage from "../pages/Error/Errorpage";
+import PrivateRoutes from "../privateroutes/PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path: ':id',
-                element:<ChefDetials></ChefDetials>,
+                element:<PrivateRoutes><ChefDetials></ChefDetials></PrivateRoutes>,
                 loader:({params})=>fetch(`https://assignment-10-server-iqs8y24am-tapaschy.vercel.app/chef/${params.id}`),
             },
             {
