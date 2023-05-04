@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { UserToContext } from '../../../provider/UserContext';
 
 const NavigationBar = () => {
@@ -19,15 +19,15 @@ const NavigationBar = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto text-white">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/Blog">Blog</Nav.Link>
+                            <Nav.Link ><NavLink to={"/"}>Home</NavLink></Nav.Link>
+                            <Nav.Link ><NavLink to={"/blog"}>Blog</NavLink></Nav.Link>
                         </Nav>
                         <Nav>
                             {
                                 user ? <>
                                     <div><Image src={user.photoURL} className='me-4' roundedCircle style={{height:"30px"}} data-bs-toggle="tooltip" data-bs-placement="top" title={user.displayName}/>
-                                    <Button onClick={handleLogout} className="color-nav">log Out</Button></div>
-                                </> : <span><Link to="/login">Logins</Link></span>
+                                    <Button onClick={handleLogout} variant="light" className='color-nav'>Log Out</Button></div>
+                                </> : <span><Button variant="light" className=''> <Link to="/login" className='text-decoration-none'>Logins</Link></Button></span>
                             }
                         </Nav>
                     </Navbar.Collapse>

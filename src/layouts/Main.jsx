@@ -7,6 +7,7 @@ import Category from '../pages/Chefcategory/Category';
 import PopularMenu from '../pages/Shared/PopularMenu';
 import OurBlogs from '../pages/Shared/OurBlogs';
 import Footer from '../pages/Footer/Footer';
+import LazyLoad from 'react-lazy-load';
 
 const Main = () => {
     const chefCategory = useLoaderData();
@@ -17,7 +18,9 @@ const Main = () => {
             <Container className='mt-4'>
                 <Row>
                     <Col lg={8}>
+                        <LazyLoad threshold={0.95} offset={300}>
                         <Image src="https://plus.unsplash.com/premium_photo-1669687760005-89584766cd99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" fluid rounded />
+                        </LazyLoad>
                     </Col>
                     <Col lg={4} className='fs-4'>
                         <h4>Our goal</h4>

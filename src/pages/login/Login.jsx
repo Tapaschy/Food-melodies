@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link,useLocation, useNavigate } from 'react-router-dom';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 import { UserToContext } from '../../provider/UserContext';
 
@@ -30,14 +30,28 @@ const Login = () => {
                 console.log(error)
             })
     };
-    // const [user,setUser]=useState(null);
+    const [user,setUser]=useState('');
      const auth =getAuth(app);
      const provider = new GoogleAuthProvider();
+     const githubProvider = new GithubAuthProvider();
+
      const handleGoogleSignIn =()=>{
         signInWithPopup(auth,provider)
         .then(result=>{
             const googleUser =result.user;
             setUser(googleUser)
+            navigate(from,{replace:true})
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+     }
+     const handleGithubSignIn =()=>{
+        signInWithPopup(auth,githubProvider)
+        .then(result=>{
+            const githubUser =result.user;
+            navigate(from,{replace:true})
+            setUser(githubUser)
         })
         .catch(error=>{
             console.log(error);
@@ -73,6 +87,9 @@ const Login = () => {
                 <Form.Text className="text-danger">
                     <Button onClick={handleGoogleSignIn} variant="primary" type="submit">
                         Login With Google
+                    </Button>
+                    <Button onClick={handleGithubSignIn} variant="primary" type="submit">
+                        Login With Github
                     </Button>
                 </Form.Text>
             </Form>

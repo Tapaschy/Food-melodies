@@ -8,13 +8,14 @@ import LoginLayout from "../layouts/LoginLayout";
 import Register from "../pages/login/Register";
 import Errorpage from "../pages/Error/Errorpage";
 import PrivateRoutes from "../privateroutes/PrivateRoutes";
+import Blog from "../pages/blog/Blog";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
         errorElement:<Errorpage></Errorpage>,
-        loader:()=>fetch('https://assignment-10-server-iqs8y24am-tapaschy.vercel.app/chef'),
+        loader:()=>fetch('https://assignment-10-server-tapaschy.vercel.app/chef'),
         children:[
             {
                 path: '/category',
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element:<PrivateRoutes><ChefDetials></ChefDetials></PrivateRoutes>,
-                loader:({params})=>fetch(`https://assignment-10-server-iqs8y24am-tapaschy.vercel.app/chef/${params.id}`),
+                loader:({params})=>fetch(`https://assignment-10-server-tapaschy.vercel.app/chef/${params.id}`),
             },
             {
                 path: 'login',
@@ -58,6 +59,16 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element:<Register></Register>
+            }
+        ]
+    },
+    {
+        path: 'blog',
+        element:<ChefLayout></ChefLayout>,
+        children:[
+            {
+                path: '/blog',
+                element:<Blog></Blog>
             }
         ]
     }

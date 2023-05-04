@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Image, Row, TabContainer } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import Recepies from './Recepies';
+import LazyLoad from 'react-lazy-load';
 
 const ChefDetials = () => {
     const chefDetails = useLoaderData();
@@ -11,10 +12,12 @@ const ChefDetials = () => {
     return (
         <div>
             <Container className='mt-5'>
+                <LazyLoad>
                 <Image src={picture} fluid rounded  style={{
                     width: "100vw",
                     height: "100vh",
                 }}/>
+                </LazyLoad>
                 <h4 className='mb-4 mt-4'>{name}</h4>
                 <p><span className='h6'>Description</span> : {bio}</p>
                 <p><span className='h6'>Experience</span> : {years_of_experience} years</p>

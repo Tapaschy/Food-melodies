@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
+import LazyLoad from 'react-lazy-load';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const Category = ({ chef }) => {
@@ -10,9 +11,11 @@ const Category = ({ chef }) => {
 
             <Col>
                 <Card>
+                    <LazyLoad threshold={0.95} offset={300}>
                     <Card.Img variant="top" src={picture} style={{
                         width: "100 %",
                         height: "25vw",}}/>
+                    </LazyLoad>
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Card.Text>
