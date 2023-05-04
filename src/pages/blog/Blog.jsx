@@ -33,9 +33,10 @@ const Blog = () => {
                         <h2>What is a custom hook, and why will you create a custom hook?</h2>
                         <p>A custom Hook is a JavaScript function whose name starts with ”use” and that may call other Hooks.
 
-That’s it! If you have code in a component that you feel would make sense to extract, either for reuse elsewhere or to keep the component simpler, you can pull that out into a function. If that function calls other hooks, like useEffect, useState, or maybe another custom hook, then your function is itself a hook, and, by convention, should be given a name that starts with “use” to make it clear that it is a hook.</p>
+                            That’s it! If you have code in a component that you feel would make sense to extract, either for reuse elsewhere or to keep the component simpler, you can pull that out into a function. If that function calls other hooks, like useEffect, useState, or maybe another custom hook, then your function is itself a hook, and, by convention, should be given a name that starts with “use” to make it clear that it is a hook.</p>
                     </Col>
                 </Row>
+                
             </Container>
         </div>
     );

@@ -6,7 +6,7 @@ const OurBlogs = () => {
     return (
         <div>
             <Container className='mt-5'>
-                <h2 className='text-center'>Our Blogs</h2>
+                <h2 className='text-center'>Our <span className='color-3'>Blogs</span> </h2>
                 <Row>
                     <Col lg={4} className='fs-4'>
                         <Image src="https://wpbingosite.com/wordpress/foodpa/wp-content/uploads/2023/01/2.jpg" fluid rounded />

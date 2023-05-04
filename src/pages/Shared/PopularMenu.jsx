@@ -5,7 +5,7 @@ const PopularMenu = () => {
     return (
         <div>
             <Container className='mt-5'>
-                <h2 className='text-center'>Popular Chef Item</h2>
+                <h2 className='text-center'>Popular <span className='color-3'>Chef Item</span> </h2>
                 <Row>
                     <Col lg={4} className='fs-4'>
                         <Image src="https://wpbingosite.com/wordpress/foodpa/wp-content/uploads/2023/03/Products-19.jpg" fluid rounded />

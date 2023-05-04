@@ -8,9 +8,9 @@ const Register = () => {
     
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const { register } = useContext(UserToContext)
-    const handleRegister = event => {
+    const { register } = useContext(UserToContext);
 
+    const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -24,8 +24,6 @@ const Register = () => {
             setError('Please add at least 6 character.');
             return
         }
-
-
         register(email, password)
             .then(result => {
                 const loggedUser = result.user;
@@ -40,7 +38,7 @@ const Register = () => {
                 console.log(error);
                 setError(error.message)
             })
-    }
+    };
     return (
         <Container className='w-25 mx-auto'>
             <h3>Please Register</h3>
@@ -62,11 +60,7 @@ const Register = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" name="accept" label="Accept Terms and Conditions" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="success" type="submit" className='w-100 '>
                     Register
                 </Button>
                 <br />
@@ -80,8 +74,8 @@ const Register = () => {
 
                 </Form.Text>
             </Form>
-            <p>{success}</p>
-            <p>{error}</p>
+            <p className='text-success'>{success}</p>
+            <p className='text-danger'>{error}</p>
         </Container>
     );
 };
