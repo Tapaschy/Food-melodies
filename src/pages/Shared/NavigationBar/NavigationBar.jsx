@@ -27,7 +27,7 @@ const NavigationBar = () => {
                                 user ? <>
                                     <div><Image src={user.photoURL} className='me-4' roundedCircle style={{height:"30px"}} data-bs-toggle="tooltip" data-bs-placement="top" title={user.displayName}/>
                                     <Button onClick={handleLogout} variant="light" className='color-nav'>Log Out</Button></div>
-                                </> : <span><Button variant="light" className=''> <Link to="/login" className='text-decoration-none'>Logins</Link></Button></span>
+                                </> : <span><Button variant="light" className=''> <Link to="/login" className='text-decoration-none'>Login</Link></Button></span>
                             }
                         </Nav>
                     </Navbar.Collapse>

@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserToContext } from '../../provider/UserContext';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
+    
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const { register } = useContext(UserToContext)
-
     const handleRegister = event => {
 
         event.preventDefault();
@@ -14,15 +17,28 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
-
         // console.log(name,email,password)
+        setError('');
+        setSuccess('');
+        if ((password.length < 6)) {
+            setError('Please add at least 6 character.');
+            return
+        }
+
+
         register(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser)
+                updateProfile(loggedUser,{
+                    displayName:name,
+                    photoURL:photo,
+                });
+                setSuccess('User created successfully.');
+                setError('');
             })
             .catch(error => {
                 console.log(error);
+                setError(error.message)
             })
     }
     return (
@@ -64,6 +80,8 @@ const Register = () => {
 
                 </Form.Text>
             </Form>
+            <p>{success}</p>
+            <p>{error}</p>
         </Container>
     );
 };

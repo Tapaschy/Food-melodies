@@ -1,9 +1,24 @@
-import React from 'react';
-import { Card, Col, ListGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Card, Col, ListGroup } from 'react-bootstrap';
 import LazyLoad from 'react-lazy-load';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Recepies = ({ chef }) => {
     const { name, picture, ingredients,instructions } = chef;
+    const [isactive,setIsActive]=useState(true);
+    const handleonClink =event=>{
+        setIsActive(current=>!current);
+        if(isactive){
+            toast("Added to favorite"); 
+        }
+        else{
+            toast("Remove from favorite");
+        }
+    }
+
+
     return (
         <Col>
             <Card>
@@ -13,7 +28,10 @@ const Recepies = ({ chef }) => {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
-
+                        <span onClick={handleonClink}>{isactive?<FaRegHeart />:<FaHeart />}</span>
+                        
+                        <ToastContainer/>
+                    
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">

@@ -7,6 +7,8 @@ import { UserToContext } from '../../provider/UserContext';
 
 
 const Login = () => {
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const {singIn}=useContext(UserToContext);
     const navigate=useNavigate();
     const location=useLocation();
@@ -19,15 +21,23 @@ const Login = () => {
         const email=form.email.value;
         const password =form.password.value;
         console.log(email,password);
+        
+        setError('');
+        setSuccess('');
+        if ((password.length < 6)) {
+            setError('Please add at 6 character');
+            return
+        }
 
         singIn(email,password)
             .then(result=>{
                 const loggedUser=result.user;
                 console.log(loggedUser);
-                navigate(from,{replace:true})
+                navigate(from,{replace:true});
+                setError('');
             })
             .catch(error=>{
-                console.log(error)
+                setError(error.message);
             })
     };
     const [user,setUser]=useState('');
@@ -93,6 +103,7 @@ const Login = () => {
                     </Button>
                 </Form.Text>
             </Form>
+            <p className='text-danger'>{error}</p>
         </Container>
     );
 };
