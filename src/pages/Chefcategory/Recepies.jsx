@@ -20,18 +20,16 @@ const Recepies = ({ chef }) => {
 
 
     return (
-        <Col>
+        <Col className='d-flex align-items-stretch'>
             <Card>
                 <LazyLoad threshold={0.95}>
                 <Card.Img variant="top" src={picture} />
                 </LazyLoad>
-                <Card.Body>
+                <Card.Body className='d-flex justify-content-between'>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
                         <span onClick={handleonClink}>{isactive?<FaRegHeart />:<FaHeart />}</span>
-                        
                         <ToastContainer/>
-                    
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">

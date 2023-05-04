@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+console.log('environment variable',import.meta.env.VITE_PASS)
 const firebaseConfig = {
-  apiKey: "AIzaSyA3YBVBMLwb7BWCOIzEdhH0FgK2XLi4LtY",
-  authDomain: "food-melodies-b902a.firebaseapp.com",
-  projectId: "food-melodies-b902a",
-  storageBucket: "food-melodies-b902a.appspot.com",
-  messagingSenderId: "356518097440",
-  appId: "1:356518097440:web:855a495abc774ada384245"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
