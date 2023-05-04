@@ -4,6 +4,9 @@ import NavigationBar from '../pages/Shared/NavigationBar/NavigationBar';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import Category from '../pages/Chefcategory/Category';
+import PopularMenu from '../pages/Shared/PopularMenu';
+import OurBlogs from '../pages/Shared/OurBlogs';
+import Footer from '../pages/Footer/Footer';
 
 const Main = () => {
     const chefCategory = useLoaderData();
@@ -34,9 +37,10 @@ const Main = () => {
                         }
                      </Row>
                 </div>
-
             </Container>
-
+            <PopularMenu></PopularMenu>
+            <OurBlogs></OurBlogs>
+            <Footer></Footer>
         </div>
     );
 };
